@@ -3,6 +3,7 @@
 
     angular.module("app")
         .constant("URL", {
+            BASE_URL: "http://ec2-52-38-234-109.us-west-2.compute.amazonaws.com/",
 
             ENTITIES: {
                 FACULTY:        "faculty",

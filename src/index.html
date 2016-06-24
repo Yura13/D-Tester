@@ -1,12 +1,78 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
 <head>
-    <meta charset="UTF-8">
-    <title>D-Tester</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title data-ng-bind="title"></title>
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css" />
+    <!-- build:css styles/app.css-->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/.tmp/styles.css">
+    <!-- endinject -->
+    <!-- endbuild -->
 </head>
 <body class="ng-cloak">
 
 <div ui-view></div>
 
 </body>
+<!-- build:js js/vendor.js -->
+<!-- bower:js -->
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="../bower_components/angular-messages/angular-messages.js"></script>
+<script src="../bower_components/angular-animate/angular-animate.js"></script>
+<script src="../bower_components/angular-aria/angular-aria.js"></script>
+<script src="../bower_components/angular-material/angular-material.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js js/app.js-->
+<!-- inject:js -->
+<script src="/src/app/app.module.js"></script>
+<script src="/src/app/admin/admin.module.js"></script>
+<script src="/src/app/core/core.module.js"></script>
+<script src="/src/app/admin/groups/groups.module.js"></script>
+<script src="/src/app/admin/subjects/subjects.module.js"></script>
+<script src="/src/app/app.config.js"></script>
+<script src="/src/app/app.constants.js"></script>
+<script src="/src/app/admin/admin.service.js"></script>
+<script src="/src/app/admin/home-admin.controller.js"></script>
+<script src="/src/app/components/image-load.directive.js"></script>
+<script src="/src/app/core/core.entities.service.js"></script>
+<script src="/src/app/admin/admins/admins.controller.js"></script>
+<script src="/src/app/admin/admins/admins.service.js"></script>
+<script src="/src/app/admin/faculties/faculties.controller.js"></script>
+<script src="/src/app/admin/faculties/faculties.service.js"></script>
+<script src="/src/app/admin/groups/groups.controller.js"></script>
+<script src="/src/app/admin/groups/groups.service.js"></script>
+<script src="/src/app/admin/specialities/specialities.controller.js"></script>
+<script src="/src/app/admin/specialities/specialities.service.js"></script>
+<script src="/src/app/admin/subjects/subjects.controller.js"></script>
+<script src="/src/app/admin/subjects/subjects.service.js"></script>
+<script src="/src/app/components/header/header.directive.js"></script>
+<script src="/src/app/admin/groups/students/students.controller.js"></script>
+<script src="/src/app/admin/groups/students/students.service.js"></script>
+<script src="/src/app/admin/subjects/schedules/schedules.controller.js"></script>
+<script src="/src/app/admin/subjects/schedules/schedules.service.js"></script>
+<script src="/src/app/admin/subjects/tests/tests.controller.js"></script>
+<script src="/src/app/admin/subjects/tests/tests.service.js"></script>
+<script src="/src/app/admin/subjects/tests/questions/questions.controller.js"></script>
+<script src="/src/app/admin/subjects/tests/questions/questions.service.js"></script>
+<script src="/src/app/admin/subjects/tests/test-details/test-details.controller.js"></script>
+<script src="/src/app/admin/subjects/tests/questions/answer/answer.controller.js"></script>
+<script src="/src/app/admin/subjects/tests/questions/answer/answers.service.js"></script>
+<!-- endinject -->
+
+<!-- inject:templates:js -->
+<!-- endinject -->
+
+<!-- endbuild -->
 </html>

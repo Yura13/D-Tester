@@ -1,7 +1,6 @@
 module.exports = function() {
     var client = './src/';
     var clientApp = client + 'app/';
-    var report = './report/';
     var root = './';
     var temp = './.tmp/';
 
@@ -26,8 +25,8 @@ module.exports = function() {
             clientApp + '**/*.js',
             '!' + clientApp + '**/*.spec.js'
         ],
-        less: client + 'styles/styles.less',
-        report: report,
+        //less: client + 'styles/styles.less',
+        less: client + 'styles/styles.css',
         root: root,
         temp: temp,
 
@@ -50,11 +49,6 @@ module.exports = function() {
                 root: 'app/'
             }
         },
-
-        /**
-         * browser sync
-         */
-        browserReloadDelay: 1000,
 
         /**
          * Bower and NPM locations

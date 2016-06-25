@@ -35,7 +35,7 @@ module.exports = function() {
          */
         optimized: {
             app: 'app.js',
-            lib: 'vendor.js'
+            lib: 'lib.js'
         },
 
         /**

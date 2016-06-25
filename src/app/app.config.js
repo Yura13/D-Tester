@@ -71,5 +71,5 @@
                 controller: "TestDetailsController as testDetails"
             })
     }
-})();
+}());
 

@@ -2,8 +2,9 @@
     "use strict";
 
     angular.module("app")
+        .constant("BASE_URL", "http://ec2-52-38-234-109.us-west-2.compute.amazonaws.com/")
+        
         .constant("URL", {
-            BASE_URL: "http://ec2-52-38-234-109.us-west-2.compute.amazonaws.com/",
 
             ENTITIES: {
                 FACULTY:        "faculty",
@@ -83,5 +84,4 @@
             SIMPLE: {NAME: "Простий вибір", VALUE: "1"},
             MULTI: {NAME: "Мульти-вибір", VALUE: "2"}
         });
-
-})();
+}());

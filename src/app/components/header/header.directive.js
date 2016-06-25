@@ -10,20 +10,9 @@
         var directive = {
             templateUrl: "app/components/header/header.directive.html",
             replace: true,
-            controller: HeaderController,
-            controllerAs: "header"
+            controller: "HeaderController as header"
         };
 
         return directive;
     }
-
-    function HeaderController() {
-        var vm = this;
-        vm.isNavCollapsed = true;
-        vm.navCollapse = navCollapse;
-        
-        function navCollapse() {
-            vm.isNavCollapsed = !vm.isNavCollapsed;
-        }
-    }
-})();
+}());

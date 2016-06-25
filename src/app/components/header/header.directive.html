@@ -1,34 +1,25 @@
 <header>
-    <nav class="navbar navbar-inverse">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" ui-sref="admin" >
-                    <img class="img-responsive" src="images/logo.png" alt="D-Tester"/>
-                </a>
+    <div layout="row" layout-fill>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <span>D-Tester</span>
+                <span flex></span>
+                <div class="nav-buttons" hide-xs>
+                    <md-button ng-repeat="item in header.menu" ui-sref="{{::item.state}}">
+                        {{::item.name}}
+                    </md-button>
+                </div>
+                <md-menu hide-gt-xs>
+                    <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Settings">
+                        <md-icon md-svg-icon="images/ic_menu_white_24px.svg"></md-icon>
+                    </md-button>
+                    <md-menu-content>
+                        <md-menu-item ng-repeat="item in header.menu">
+                            <md-button ui-sref="{{::item.state}}">{{::item.name | uppercase}}</md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
             </div>
-
-            <div class="navbar-collapse" >
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a ui-sref="admin.faculties">Факультети</a>
-                    </li>
-                    <li>
-                        <a ui-sref="admin.specialities">Спеціальності</a>
-                    </li>
-                    <li>
-                        <a ui-sref="admin.groups">Групи</a>
-                    </li>
-                    <li>
-                        <a ui-sref="admin.subjects">Предмети</a>
-                    </li>
-                    <li>
-                        <a ui-sref="user.subjects">Предмети</a>
-                    </li>
-                    <li>
-                        <a ui-sref="user.results">Результати</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+        </md-toolbar>
+    </div>
 </header>

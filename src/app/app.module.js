@@ -3,9 +3,9 @@
 
     angular.module("app", [
         "ui.router",
-        "ui.bootstrap",
+        "ngMaterial",
         "ngMessages",
         "app.admin"
     ]);
-})();
+}());
 

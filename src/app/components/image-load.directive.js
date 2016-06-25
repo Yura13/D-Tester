@@ -1,7 +1,7 @@
 (function() {
     "use strict";
 
-    angular.module("app.admin")
+    angular.module("app")
         .directive("imageLoad", imageLoad);
 
     imageLoad.$inject = [];
@@ -26,4 +26,4 @@
 
         return directive;
     }
-})();
+}());

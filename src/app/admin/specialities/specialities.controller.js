@@ -25,10 +25,9 @@
         }
 
         function getSpecialityById(speciality) {
-            return specialitiesService.getSpecialityById(speciality)
-                .then(function(response) {
-                    return response;
-                });
+            return specialitiesService.getSpecialityById(speciality).then(function(response) {
+                return response;
+            });
         }
 
         function saveSpeciality(speciality) {
@@ -54,4 +53,4 @@
             });
         }
     }
-})();
+}());

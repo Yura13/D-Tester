@@ -13,6 +13,7 @@
         </md-button>
     </div>
 </md-toolbar>
+
 <md-content>
     <md-list>
         <md-subheader class="md-no-sticky">
@@ -29,10 +30,16 @@
             </div>
 
             <div flex-gt-xs="20">
+                <md-button class="md-fab md-primary md-mini" ng-click="faculties.getGroupsByFaculty(faculty)">
+                    <md-tooltip md-direction="top">Групи</md-tooltip>
+                    <md-icon md-svg-src="images/ic_group_white_18px.svg"></md-icon>
+                </md-button>
+
                 <md-button class="md-fab md-primary md-mini" ng-click="faculties.showSaveForm(faculty)">
                     <md-tooltip md-direction="top">Редагувати</md-tooltip>
                     <md-icon md-svg-src="images/ic_edit_white_18px.svg"></md-icon>
                 </md-button>
+
                 <md-button class="md-fab md-primary md-mini" ng-click="faculties.removeFaculty(faculty)">
                     <md-tooltip md-direction="top">Видалити</md-tooltip>
                     <md-icon md-svg-src="images/ic_delete_forever_white_18px.svg"></md-icon>
@@ -43,9 +50,3 @@
         </md-list-item>
     </md-list>
 </md-content>
-
-
-            <!--<button ui-sref="admin.groupsByEntity({entity: 'faculty', entity_id: faculty.faculty_id})"-->
-                   <!--title="Перейти до груп факультету {{::faculty.faculty_name}}">-->
-                <!--<i class="fa fa-list"></i>-->
-            <!--</button>-->

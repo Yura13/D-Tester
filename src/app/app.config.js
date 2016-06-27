@@ -29,8 +29,18 @@
                 templateUrl: "app/admin/faculties/faculties.html",
                 controller: "FacultiesController as faculties"
             })
+            .state("admin.specialities", {
+                url: "/specialities",
+                templateUrl: "app/admin/specialities/specialities.html",
+                controller: "SpecialitiesController as specialities"
+            })
             .state("admin.groups", {
                 url: "/groups",
+                templateUrl: "app/admin/groups/groups.html",
+                controller: "GroupsController as groups"
+            })
+            .state("admin.groupsByEntity", {
+                url: "/{entity}/{entity_id:int}/groups",
                 templateUrl: "app/admin/groups/groups.html",
                 controller: "GroupsController as groups"
             })
@@ -38,11 +48,6 @@
                 url: "/groups/{group_id:int}/students",
                 templateUrl: "app/admin/groups/students/students.html",
                 controller: "StudentsController as students"
-            })
-            .state("admin.specialities", {
-                url: "/specialities",
-                templateUrl: "app/admin/specialities/specialities.html",
-                controller: "SpecialitiesController as specialities"
             })
             .state("admin.subjects", {
                 url: "/subjects",

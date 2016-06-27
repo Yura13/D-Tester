@@ -13,17 +13,15 @@
         this.removeSpeciality = removeSpeciality;
 
         function getSpecialities() {
-            return coreEntityService.getEntities(URL.ENTITIES.SPECIALITY)
-                .then(function(response) {
-                    return response;
-                });
+            return coreEntityService.getEntities(URL.ENTITIES.SPECIALITY).then(function(response) {
+                return response;
+            });
         }
 
         function getSpecialityById(speciality) {
-            return coreEntityService.getEntityById(URL.ENTITIES.SPECIALITY, speciality.speciality_id)
-                .then(function(response) {
-                    return response;
-                });
+            return coreEntityService.getEntityById(URL.ENTITIES.SPECIALITY, speciality.speciality_id).then(function(response) {
+                return response;
+            });
         }
 
         function saveSpeciality(speciality) {
@@ -39,4 +37,4 @@
         }
     }
 
-})();
+}());

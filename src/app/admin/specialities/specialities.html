@@ -13,6 +13,7 @@
         </md-button>
     </div>
 </md-toolbar>
+
 <md-content>
     <md-list>
         <md-subheader class="md-no-sticky">
@@ -28,12 +29,12 @@
                 <p>{{::speciality.speciality_code}}</p>
             </div>
 
-
             <div flex-gt-xs="20">
                 <md-button class="md-fab md-primary md-mini" ng-click="specialities.showSaveForm(speciality)">
                     <md-tooltip md-direction="top">Редагувати</md-tooltip>
                     <md-icon md-svg-src="images/ic_edit_white_18px.svg"></md-icon>
                 </md-button>
+
                 <md-button class="md-fab md-primary md-mini" ng-click="specialities.removeSpeciality(speciality)">
                     <md-tooltip md-direction="top">Видалити</md-tooltip>
                     <md-icon md-svg-src="images/ic_delete_forever_white_18px.svg"></md-icon>

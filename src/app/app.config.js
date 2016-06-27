@@ -4,9 +4,13 @@
     angular.module("app")
         .config(configApp);
 
-    configApp.$inject = ["$stateProvider", "$urlRouterProvider"];
+    configApp.$inject = ["$stateProvider", "$urlRouterProvider", "$mdThemingProvider"];
 
-    function configApp($stateProvider, $urlRouterProvider) {
+    function configApp($stateProvider, $urlRouterProvider, $mdThemingProvider) {
+        $mdThemingProvider.theme('default')
+            .primaryPalette('teal')
+            .accentPalette('indigo');
+        
         $urlRouterProvider.otherwise("admin");
 
         $stateProvider

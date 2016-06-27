@@ -2,18 +2,41 @@
     "use strict";
 
     angular.module("app.admin")
-        .factory("specialitiesService", specialitiesService);
+        .service("specialitiesService", specialitiesService);
 
-    specialitiesService.$inject = ["$http", "$q", "BASE_URL", "URL", "PAGINATION"];
+    specialitiesService.$inject = ["$http", "$q", "BASE_URL", "URL", "PAGINATION", "coreEntityService"];
 
-    function specialitiesService($http, $q, BASE_URL, URL, PAGINATION) {
-        var service = {
-            
-        };
+    function specialitiesService($http, $q, BASE_URL, URL, PAGINATION, coreEntityService) {
+        this.getSpecialities = getSpecialities;
+        this.getSpecialityById = getSpecialityById;
+        this.saveSpeciality = saveSpeciality;
+        this.removeSpeciality = removeSpeciality;
 
-        return service;
+        function getSpecialities() {
+            return coreEntityService.getEntities(URL.ENTITIES.SPECIALITY)
+                .then(function(response) {
+                    return response;
+                });
+        }
 
-        
+        function getSpecialityById(speciality) {
+            return coreEntityService.getEntityById(URL.ENTITIES.SPECIALITY, speciality.speciality_id)
+                .then(function(response) {
+                    return response;
+                });
+        }
+
+        function saveSpeciality(speciality) {
+            if (speciality.speciality_id === undefined) {
+                return coreEntityService.addEntity(URL.ENTITIES.SPECIALITY, speciality);
+            } else {
+                return coreEntityService.editEntity(URL.ENTITIES.SPECIALITY, speciality.speciality_id, speciality);
+            }
+        }
+
+        function removeSpeciality(speciality) {
+            return coreEntityService.removeEntity(URL.ENTITIES.SPECIALITY, speciality.speciality_id);
+        }
     }
 
 })();

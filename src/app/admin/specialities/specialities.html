@@ -1,1 +1,53 @@
-SPECIALITIES
+<md-toolbar class="md-theme-light">
+    <div class="md-toolbar-tools" >
+        <span flex-gt-xs="65">Спеціальності</span>
+
+        <md-input-container flex-gt-xs="25" class="md-accent">
+            <label>Пошук</label>
+            <input ng-model="specialities.search">
+        </md-input-container>
+
+        <md-button class="md-fab md-accent md-mini" ng-click="specialities.showSaveForm()">
+            <md-tooltip md-direction="top">Додати</md-tooltip>
+            <md-icon md-svg-src="images/ic_add_white_18px.svg"></md-icon>
+        </md-button>
+    </div>
+</md-toolbar>
+<md-content>
+    <md-list>
+        <md-subheader class="md-no-sticky">
+            Назва-------------------Опис
+        </md-subheader>
+
+        <md-list-item layout="row" ng-repeat="speciality in specialities.list">
+            <div flex-gt-xs="50">
+                <h4>{{::speciality.speciality_name}}</h4>
+            </div>
+
+            <div flex-gt-xs="20">
+                <p>{{::speciality.speciality_code}}</p>
+            </div>
+
+
+            <div flex-gt-xs="20">
+                <md-button class="md-fab md-primary md-mini" ng-click="specialities.showSaveForm(speciality)">
+                    <md-tooltip md-direction="top">Редагувати</md-tooltip>
+                    <md-icon md-svg-src="images/ic_edit_white_18px.svg"></md-icon>
+                </md-button>
+                <md-button class="md-fab md-primary md-mini" ng-click="specialities.removeSpeciality(speciality)">
+                    <md-tooltip md-direction="top">Видалити</md-tooltip>
+                    <md-icon md-svg-src="images/ic_delete_forever_white_18px.svg"></md-icon>
+                </md-button>
+            </div>
+
+            <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+    </md-list>
+</md-content>
+
+
+<!--<button class="btn btn-info" title='Перейти до груп спеціальності "{{speciality.speciality_name}}"'-->
+<!--ui-sref="admin.groupsByEntity({entity: 'speciality', entity_id: speciality.speciality_id})">-->
+<!--<i class="fa fa-list"></i>-->
+<!--</button>-->
+

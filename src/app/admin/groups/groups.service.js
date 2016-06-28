@@ -34,8 +34,7 @@
         }
 
         function getGroupsBySpeciality(speciality) {
-            console.log(speciality);
-            return coreEntityService.getEntitiesByEntityId(URL.ENTITIES.SPECIALITY, URL.GET_GROUPS_BY_SPECIALITY, speciality.speciality_id)
+            return coreEntityService.getEntitiesByEntityId(URL.ENTITIES.GROUP, URL.GET_GROUPS_BY_SPECIALITY, speciality.speciality_id)
                 .then(function(response) {
                     return response;
                 });

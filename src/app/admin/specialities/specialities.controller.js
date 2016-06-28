@@ -36,7 +36,6 @@
                 entity: "speciality",
                 entity_id: speciality.speciality_id
             };
-            console.log(entity);
             $state.go("admin.groupsByEntity", entity);
         }
         

@@ -34,9 +34,8 @@
                     });
                 } else if (($state.params.entity === "speciality")) {
                     var speciality = {
-                        speciality_id: $state.params.speciality_id
+                        speciality_id: $state.params.entity_id
                     };
-
                     return groupsService.getGroupsBySpeciality(speciality).then(function(response) {
                         vm.list = response;
                         return vm.list;

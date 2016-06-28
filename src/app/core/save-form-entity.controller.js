@@ -1,7 +1,7 @@
 (function() {
     "use strict";
 
-    angular.module("app.admin")
+    angular.module("app.core")
         .controller("SaveFormEntityController", SaveFormEntityController);
 
     SaveFormEntityController.$inject = ["$mdBottomSheet", "entity", "facultiesService", "specialitiesService", "$state"];
@@ -12,7 +12,7 @@
         vm.clickSave = clickSave;
         vm.clickCancel = clickCancel;
 
-        if ($state.is("admin.groups")) {
+        if ($state.is("admin.groups") || $state.is("admin.groupsByEntity")) {
             facultiesService.getFaculties().then(function(response) {
                 vm.faculties = response;
                 return vm.faculties;

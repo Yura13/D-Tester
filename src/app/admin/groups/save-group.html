@@ -5,19 +5,25 @@
             <input ng-model="form.entity.group_name" name="groupName" type="text" required>
         </md-input-container>
 
-        <md-select flex-gt-xs="30" ng-model="form.entity.faculty_id" md-on-open="form.loadFaculties()"
-                   placeholder="Виберіть факультет" name="facultyName">
-            <md-option ng-value="faculty.faculty_id" ng-repeat="faculty in form.faculties">
-                {{::faculty.faculty_name}}
-            </md-option>
-        </md-select>
+        <md-input-container>
+            <label>Виберіть факультет</label>
+            <md-select flex-gt-xs="30" ng-model="form.entity.faculty_id" md-on-open="form.loadFaculties()"
+                       name="facultyName" required style="min-width: 300px;">
+                <md-option ng-value="faculty.faculty_id" ng-repeat="faculty in form.faculties">
+                    {{::faculty.faculty_name}}
+                </md-option>
+            </md-select>
+        </md-input-container>
 
-        <md-select flex-gt-xs="30" ng-model="form.entity.speciality_id" md-on-open="form.loadSpecialities()"
-                   placeholder="Виберіть спеціальність" name="specialityName">
-            <md-option ng-value="speciality.speciality_id" ng-repeat="speciality in form.specialities">
-                {{::speciality.speciality_name}}
-            </md-option>
-        </md-select>
+        <md-input-container>
+            <label>Виберіть спеціальність</label>
+            <md-select flex-gt-xs="30" ng-model="form.entity.speciality_id" md-on-open="form.loadSpecialities()"
+                       name="specialityName" required style="min-width: 300px;">
+                <md-option ng-value="speciality.speciality_id" ng-repeat="speciality in form.specialities">
+                    {{::speciality.speciality_name}}
+                </md-option>
+            </md-select>
+        </md-input-container>
 
         <div flex-gt-xs="20">
             <md-button type="submit" class="md-fab md-primary md-mini" ng-click="form.clickSave(form.entity)"

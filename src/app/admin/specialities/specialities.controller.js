@@ -4,10 +4,11 @@
     angular.module("app.admin")
         .controller("SpecialitiesController", SpecialitiesController);
 
-    SpecialitiesController.$inject = ["specialitiesService", "$mdBottomSheet"];
+    SpecialitiesController.$inject = ["specialitiesService", "$mdBottomSheet", "$state"];
 
-    function SpecialitiesController (specialitiesService, $mdBottomSheet) {
+    function SpecialitiesController (specialitiesService, $mdBottomSheet, $state) {
         var vm = this;
+        vm.getGroupsBySpeciality = getGroupsBySpeciality;
         vm.showSaveForm = showSaveForm;
         vm.removeSpeciality = removeSpeciality;
 
@@ -30,6 +31,15 @@
             });
         }
 
+        function getGroupsBySpeciality(speciality) {
+            var entity = {
+                entity: "speciality",
+                entity_id: speciality.speciality_id
+            };
+            console.log(entity);
+            $state.go("admin.groupsByEntity", entity);
+        }
+        
         function saveSpeciality(speciality) {
             return specialitiesService.saveSpeciality(speciality).then(function(response) {
                 activate();

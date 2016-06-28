@@ -4,9 +4,9 @@
     angular.module("app.admin.groups")
         .controller("GroupsController", GroupsController);
 
-    GroupsController.$inject = ["groupsService", "$mdBottomSheet", "$state", "$state", "$stateParams", "URL"];
+    GroupsController.$inject = ["groupsService", "$mdBottomSheet", "$state", "$state"];
 
-    function GroupsController(groupsService, $mdBottomSheet, $state, $stateParams, URL) {
+    function GroupsController(groupsService, $mdBottomSheet, $state) {
         var vm = this;
         vm.showSaveForm = showSaveForm;
         vm.removeGroup = removeGroup;
@@ -24,21 +24,17 @@
                     return vm.list;
                 });
             } else if ($state.is("admin.groupsByEntity")) {
-                console.log($stateParams);
-                console.log($state);
                 if ($state.params.entity === "faculty") {
                     var faculty = {
-                        faculty_id: $stateParams.faculty_id
+                        faculty_id: $state.params.entity_id
                     };
-                    console.log($state.params.entity);
                     return groupsService.getGroupsByFaculty(faculty).then(function(response) {
-                        console.log(response);
                         vm.list = response;
                         return vm.list;
                     });
                 } else if (($state.params.entity === "speciality")) {
                     var speciality = {
-                        speciality_id: $stateParams.speciality_id
+                        speciality_id: $state.params.speciality_id
                     };
 
                     return groupsService.getGroupsBySpeciality(speciality).then(function(response) {
@@ -47,7 +43,6 @@
                     });
                 }
             }
-
         }
 
         function getGroupById(group) {

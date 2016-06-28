@@ -30,6 +30,11 @@
             </div>
 
             <div flex-gt-xs="20">
+                <md-button class="md-fab md-primary md-mini" ng-click="specialities.getGroupsBySpeciality(speciality)">
+                    <md-tooltip md-direction="top">Групи</md-tooltip>
+                    <md-icon md-svg-src="images/ic_group_white_18px.svg"></md-icon>
+                </md-button>
+
                 <md-button class="md-fab md-primary md-mini" ng-click="specialities.showSaveForm(speciality)">
                     <md-tooltip md-direction="top">Редагувати</md-tooltip>
                     <md-icon md-svg-src="images/ic_edit_white_18px.svg"></md-icon>
@@ -45,10 +50,3 @@
         </md-list-item>
     </md-list>
 </md-content>
-
-
-<!--<button class="btn btn-info" title='Перейти до груп спеціальності "{{speciality.speciality_name}}"'-->
-<!--ui-sref="admin.groupsByEntity({entity: 'speciality', entity_id: speciality.speciality_id})">-->
-<!--<i class="fa fa-list"></i>-->
-<!--</button>-->
-

@@ -17,19 +17,19 @@
 <md-content>
     <md-list>
         <md-subheader class="md-no-sticky">
-            Назва-------------------Опис
+
         </md-subheader>
 
-        <md-list-item layout="row" ng-repeat="speciality in specialities.list">
-            <div flex-gt-xs="50">
+        <md-list-item layout="row" ng-repeat="speciality in specialities.list" layout-wrap>
+            <div flex-gt-xs="55">
                 <h4>{{::speciality.speciality_name}}</h4>
             </div>
 
-            <div flex-gt-xs="20">
+            <div flex-gt-xs="25">
                 <p>{{::speciality.speciality_code}}</p>
             </div>
 
-            <div flex-gt-xs="20">
+            <div flex-gt-xs="20" style="text-align:right">
                 <md-button class="md-fab md-primary md-mini" ng-click="specialities.getGroupsBySpeciality(speciality)">
                     <md-tooltip md-direction="top">Групи</md-tooltip>
                     <md-icon md-svg-src="images/ic_group_white_18px.svg"></md-icon>

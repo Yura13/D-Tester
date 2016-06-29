@@ -1,16 +1,16 @@
 <md-bottom-sheet class="md-list md-has-header" ng-cloak>
     <form name="saveForm" layout="row">
-        <md-input-container flex-gt-xs="35">
+        <md-input-container flex-gt-xs="40">
             <label>Назва факультету</label>
             <input ng-model="form.entity.faculty_name" name="facultyName" type="text" required>
         </md-input-container>
 
-        <md-input-container flex-gt-xs="45">
+        <md-input-container flex-gt-xs="40">
             <label>Опис факультету</label>
             <input ng-model="form.entity.faculty_description" name="facultyDesc" type="text" required>
         </md-input-container>
 
-        <div flex-gt-xs="20">
+        <div flex-gt-xs="20" class="md-secondary">
             <md-button type="submit" class="md-fab md-primary md-mini" ng-click="form.clickSave(form.entity)"
                        ng-disabled="saveForm.$invalid">
                 <md-tooltip md-direction="top">Зберегти</md-tooltip>

@@ -5,9 +5,9 @@
             <input ng-model="form.entity.group_name" name="groupName" type="text" required>
         </md-input-container>
 
-        <md-input-container>
+        <md-input-container flex-gt-xs="30">
             <label>Виберіть факультет</label>
-            <md-select flex-gt-xs="30" ng-model="form.entity.faculty_id" md-on-open="form.loadFaculties()"
+            <md-select ng-model="form.entity.faculty_id" md-on-open="form.loadFaculties()"
                        name="facultyName" required style="min-width: 300px;">
                 <md-option ng-value="faculty.faculty_id" ng-repeat="faculty in form.faculties">
                     {{::faculty.faculty_name}}
@@ -15,9 +15,9 @@
             </md-select>
         </md-input-container>
 
-        <md-input-container>
+        <md-input-container flex-gt-xs="30">
             <label>Виберіть спеціальність</label>
-            <md-select flex-gt-xs="30" ng-model="form.entity.speciality_id" md-on-open="form.loadSpecialities()"
+            <md-select ng-model="form.entity.speciality_id" md-on-open="form.loadSpecialities()"
                        name="specialityName" required style="min-width: 300px;">
                 <md-option ng-value="speciality.speciality_id" ng-repeat="speciality in form.specialities">
                     {{::speciality.speciality_name}}

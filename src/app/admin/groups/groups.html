@@ -1,23 +1,37 @@
 <md-toolbar class="md-theme-light">
-    <div class="md-toolbar-tools" >
-        <span flex-gt-xs="65">Групи</span>
-
-        <md-input-container flex-gt-xs="25" class="md-accent">
+    <div class="md-toolbar-tools">
+        <md-input-container flex-gt-xs="25" class="md-accent" style="margin-top: 36px; margin-bottom: 0px">
             <label>Пошук</label>
             <input ng-model="groups.search">
         </md-input-container>
 
-        <md-button class="md-fab md-accent md-mini" ng-click="groups.showSaveForm()">
-            <md-tooltip md-direction="top">Додати</md-tooltip>
-            <md-icon md-svg-src="images/ic_add_white_18px.svg"></md-icon>
-        </md-button>
+        <p flex-gt-xs="75"></p>
+
+        <div class="md-secondary">
+            <md-button class="md-fab md-accent md-mini" ng-click="groups.showSaveForm()">
+                <md-tooltip md-direction="top">Додати</md-tooltip>
+                <md-icon md-svg-src="images/ic_add_white_18px.svg"></md-icon>
+            </md-button>
+        </div>
     </div>
 </md-toolbar>
 
 <md-content>
     <md-list>
         <md-subheader class="md-no-sticky">
+            <div layout="row">
+                <div flex-gt-xs="20">
+                    <span>Назва групи</span>
+                </div>
 
+                <div flex-gt-xs="30">
+                    <span>Факультет</span>
+                </div>
+
+                <div flex-gt-xs="30">
+                    <span>Спеціальність</span>
+                </div>
+            </div>
         </md-subheader>
 
         <md-list-item layout="row" ng-repeat="group in groups.list" layout-wrap>
@@ -29,7 +43,7 @@
                 <!--<p>{{::group.faculty_description}}</p>-->
             <!--</div>-->
 
-            <div flex-gt-xs="20" style="text-align:right">
+            <div flex-gt-xs="20" class="md-secondary">
                 <md-button class="md-fab md-primary md-mini" ng-click="groups.showSaveForm(group)">
                     <md-tooltip md-direction="top">Редагувати</md-tooltip>
                     <md-icon md-svg-src="images/ic_edit_white_18px.svg"></md-icon>

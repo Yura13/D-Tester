@@ -15,12 +15,14 @@
 
         function activate() {
             getGroups();
+            getFaculties();
+            getSpecialities();
         }
 
         function getGroups() {
             if ($state.is("admin.groups")) {
-                return groupsService.getGroups().then(function(response) {
-                    vm.list = response;
+                return groupsService.getGroups().then(function(data) {
+                    vm.list = data;
                     return vm.list;
                 });
             } else if ($state.is("admin.groupsByEntity")) {
@@ -28,16 +30,16 @@
                     var faculty = {
                         faculty_id: $state.params.entity_id
                     };
-                    return groupsService.getGroupsByFaculty(faculty).then(function(response) {
-                        vm.list = response;
+                    return groupsService.getGroupsByFaculty(faculty).then(function(data) {
+                        vm.list = data;
                         return vm.list;
                     });
                 } else if (($state.params.entity === "speciality")) {
                     var speciality = {
                         speciality_id: $state.params.entity_id
                     };
-                    return groupsService.getGroupsBySpeciality(speciality).then(function(response) {
-                        vm.list = response;
+                    return groupsService.getGroupsBySpeciality(speciality).then(function(data) {
+                        vm.list = data;
                         return vm.list;
                     });
                 }
@@ -45,8 +47,8 @@
         }
 
         function getGroupById(group) {
-            return groupsService.getGroupById(group).then(function(response) {
-                return response;
+            return groupsService.getGroupById(group).then(function(data) {
+                return data;
             });
         }
 
@@ -56,6 +58,20 @@
             });
         }
 
+        function getFaculties() {
+            return groupsService.getFaculties().then(function(data) {
+                vm.faculties = data;
+                return vm.faculties;
+            });
+        }
+
+        function getSpecialities() {
+            return groupsService.getSpecialities().then(function (data) {
+                vm.specialities = data;
+                return vm.specialities;
+            });
+        }
+            
         function removeGroup(group) {
             return groupsService.removeGroup(group).then(function(response) {
                 activate();

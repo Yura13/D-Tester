@@ -13,13 +13,13 @@
         vm.clickCancel = clickCancel;
 
         if ($state.is("admin.groups") || $state.is("admin.groupsByEntity")) {
-            facultiesService.getFaculties().then(function(response) {
-                vm.faculties = response;
+            facultiesService.getFaculties().then(function(data) {
+                vm.faculties = data;
                 return vm.faculties;
             });
 
-            specialitiesService.getSpecialities().then(function(response) {
-                vm.specialities = response;
+            specialitiesService.getSpecialities().then(function(data) {
+                vm.specialities = data;
                 return vm.specialities;
             });
         }

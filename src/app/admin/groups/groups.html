@@ -35,13 +35,17 @@
         </md-subheader>
 
         <md-list-item layout="row" ng-repeat="group in groups.list" layout-wrap>
-            <div flex-gt-xs="80">
+            <div flex-gt-xs="20">
                 <h4>{{::group.group_name}}</h4>
             </div>
 
-            <!--<div flex-gt-xs="45">-->
-                <!--<p>{{::group.faculty_description}}</p>-->
-            <!--</div>-->
+            <div flex-gt-xs="30">
+                <p>{{::groups.faculties[group.faculty_id]}}</p>
+            </div>
+
+            <div flex-gt-xs="30">
+                <p>{{::groups.specialities[group.speciality_id]}}</p>
+            </div>
 
             <div flex-gt-xs="20" class="md-secondary">
                 <md-button class="md-fab md-primary md-mini" ng-click="groups.showSaveForm(group)">

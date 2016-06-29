@@ -19,15 +19,15 @@
         }
 
         function getSpecialities() {
-            return specialitiesService.getSpecialities().then(function(response) {
-                vm.list = response;
+            return specialitiesService.getSpecialities().then(function(data) {
+                vm.list = data;
                 return vm.list;
             });
         }
 
         function getSpecialityById(speciality) {
-            return specialitiesService.getSpecialityById(speciality).then(function(response) {
-                return response;
+            return specialitiesService.getSpecialityById(speciality).then(function(data) {
+                return data;
             });
         }
 

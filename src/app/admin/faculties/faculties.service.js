@@ -13,14 +13,14 @@
         this.removeFaculty = removeFaculty;
         
         function getFaculties() {
-            return coreEntityService.getEntities(URL.ENTITIES.FACULTY).then(function(response) {
-                return response;
+            return coreEntityService.getEntities(URL.ENTITIES.FACULTY).then(function(data) {
+                return data;
             });
         }
 
         function getFacultyById(faculty) {
-            return coreEntityService.getEntityById(URL.ENTITIES.FACULTY, faculty.faculty_id).then(function(response) {
-                return response;
+            return coreEntityService.getEntityById(URL.ENTITIES.FACULTY, faculty.faculty_id).then(function(data) {
+                return data;
             });
         }
 

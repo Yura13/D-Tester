@@ -19,15 +19,15 @@
         }
 
         function getFaculties() {
-            return facultiesService.getFaculties().then(function(response) {
-                vm.list = response;
+            return facultiesService.getFaculties().then(function(data) {
+                vm.list = data;
                 return vm.list;
             });
         }
 
         function getFacultyById(faculty) {
-            return facultiesService.getFacultyById(faculty).then(function(response) {
-                return response;
+            return facultiesService.getFacultyById(faculty).then(function(data) {
+                return data;
             });
         }
 

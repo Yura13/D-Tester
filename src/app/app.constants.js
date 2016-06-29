@@ -83,5 +83,12 @@
         .constant("TYPES_OF_QUESTION", {
             SIMPLE: {NAME: "Простий вибір", VALUE: "1"},
             MULTI: {NAME: "Мульти-вибір", VALUE: "2"}
-        });
+        })
+
+        .constant("MENU_ITEMS", [
+            {name: "Факультети", state: "admin.faculties"},
+            {name: "Спеціальності", state: "admin.specialities"},
+            {name: "Групи", state: "admin.groups"},
+            {name: "Предмети", state: "admin.subjects"}
+        ]);
 }());

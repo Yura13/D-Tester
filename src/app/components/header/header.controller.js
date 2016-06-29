@@ -1,18 +1,13 @@
 (function() {
     "use strict";
 
-    angular.module("app")
+    angular.module("app.admin")
         .controller("HeaderController", HeaderController);
 
-    HeaderController.$inject = [];
+    HeaderController.$inject = ["MENU_ITEMS"];
 
-    function HeaderController() {
+    function HeaderController(MENU_ITEMS) {
         var vm = this;
-        vm.menu = [
-            {name: "Факультети", state: "admin.faculties"},
-            {name: "Спеціальності", state: "admin.specialities"},
-            {name: "Групи", state: "admin.groups"},
-            {name: "Предмети", state: "admin.subjects"}
-        ];
+        vm.menu = MENU_ITEMS;
     }
 })();

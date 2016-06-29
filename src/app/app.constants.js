@@ -86,9 +86,9 @@
         })
 
         .constant("MENU_ITEMS", [
-            {name: "Факультети", state: "admin.faculties"},
-            {name: "Спеціальності", state: "admin.specialities"},
-            {name: "Групи", state: "admin.groups"},
-            {name: "Предмети", state: "admin.subjects"}
+            {NAME: "Факультети", STATE: "admin.faculties"},
+            {NAME: "Спеціальності", STATE: "admin.specialities"},
+            {NAME: "Групи", STATE: "admin.groups"},
+            {NAME: "Предмети", STATE: "admin.subjects"}
         ]);
 }());

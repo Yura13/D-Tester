@@ -6,8 +6,8 @@
                 <span flex></span>
 
                 <div class="nav-buttons" hide-xs>
-                    <md-button ng-repeat="item in header.menu" ui-sref="{{::item.state}}">
-                        {{::item.name}}
+                    <md-button ng-repeat="item in header.menu" ui-sref="{{::item.STATE}}">
+                        {{::item.NAME}}
                     </md-button>
                 </div>
                 <md-menu hide-gt-xs>
@@ -17,7 +17,7 @@
 
                     <md-menu-content>
                         <md-menu-item ng-repeat="item in header.menu">
-                            <md-button ui-sref="{{::item.state}}">{{::item.name | uppercase}}</md-button>
+                            <md-button ui-sref="{{::item.STATE}}">{{::item.NAME | uppercase}}</md-button>
                         </md-menu-item>
                     </md-menu-content>
                 </md-menu>

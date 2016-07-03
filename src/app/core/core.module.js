@@ -6,5 +6,4 @@
         "ngMaterial",
         "ngMessages"
     ]);
-
 }());

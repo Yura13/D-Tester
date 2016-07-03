@@ -2,15 +2,29 @@
     <form name="saveForm">
         <md-dialog-content>
             <div class="md-dialog-content">
-                <md-input-container layout="row">
-                    <label>Назва предмету</label>
-                    <input ng-model="form.entity.subject_name" name="subjectName" type="text" required>
-                </md-input-container>
+                <div layout="column">
+                    <md-input-container>
+                        <label>Назва предмету</label>
+                        <input ng-model="form.entity.subject_name" name="subjectName" type="text" required
+                               ng-minlength="5" ng-maxlength="30">
+                        <div ng-messages="saveForm.subjectName.$error" ng-if="saveForm.subjectName.$dirty">
+                            <div ng-message="required">Поле обов'язкове для заповнення</div>
+                            <div ng-message-exp="['minlength', 'maxlength']">Кількість символів від 5 до 30</div>
+                        </div>
+                    </md-input-container>
+                </div>
 
-                <md-input-container layout="row">
-                    <label>Опис предмету</label>
-                    <input ng-model="form.entity.subject_description" name="subjectDesc" type="text" required>
-                </md-input-container>
+                <div layout="column">
+                    <md-input-container>
+                        <label>Опис предмету</label>
+                        <input ng-model="form.entity.subject_description" name="subjectDesc" type="text" required
+                               ng-minlength="5" ng-maxlength="100">
+                        <div ng-messages="saveForm.subjectDesc.$error" ng-if="saveForm.subjectDesc.$dirty">
+                            <div ng-message="required">Поле обов'язкове для заповнення</div>
+                            <div ng-message-exp="['minlength', 'maxlength']">Кількість символів від 5 до 100</div>
+                        </div>
+                    </md-input-container>
+                </div>
             </div>
         </md-dialog-content>
 

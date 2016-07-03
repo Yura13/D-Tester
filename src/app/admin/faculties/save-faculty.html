@@ -1,16 +1,30 @@
 <md-dialog aria-label="List dialog" ng-cloak style="width: 500px">
-    <form name="saveForm">
+    <form name="saveForm" layout="column">
         <md-dialog-content>
             <div class="md-dialog-content">
-                <md-input-container layout="row">
-                    <label>Назва факультету</label>
-                    <input ng-model="form.entity.faculty_name" name="facultyName" type="text" required>
-                </md-input-container>
+                <div layout="column">
+                    <md-input-container>
+                        <label>Назва факультету</label>
+                        <input ng-model="form.entity.faculty_name" name="facultyName" type="text" required
+                               ng-minlength="3" ng-maxlength="50">
+                        <div ng-messages="saveForm.facultyName.$error" ng-if="saveForm.facultyName.$dirty">
+                            <div ng-message="required">Поле обов'язкове для заповнення</div>
+                            <div ng-message-exp="['minlength', 'maxlength']">Кількість символів від 3 до 50</div>
+                        </div>
+                    </md-input-container>
+                </div>
 
-                <md-input-container layout="row">
-                    <label>Опис факультету</label>
-                    <input ng-model="form.entity.faculty_description" name="facultyDesc" type="text" required>
-                </md-input-container>
+                <div layout="column">
+                    <md-input-container>
+                        <label>Опис факультету</label>
+                        <input ng-model="form.entity.faculty_description" name="facultyDesc" type="text" required
+                               ng-minlength="5" ng-maxlength="100">
+                        <div ng-messages="saveForm.facultyDesc.$error" ng-if="saveForm.facultyDesc.$dirty">
+                            <div ng-message="required">Поле обов'язкове для заповнення</div>
+                            <div ng-message-exp="['minlength', 'maxlength']">Кількість символів від 5 до 100</div>
+                        </div>
+                    </md-input-container>
+                </div>
             </div>
         </md-dialog-content>
 

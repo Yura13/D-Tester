@@ -2,30 +2,47 @@
     <form name="saveForm">
         <md-dialog-content>
             <div class="md-dialog-content">
-                <md-input-container layout="row">
-                    <label>Назва групи</label>
-                    <input ng-model="form.entity.group_name" name="groupName" type="text" required>
-                </md-input-container>
+                <div layout="column">
+                    <md-input-container>
+                        <label>Назва групи</label>
+                        <input ng-model="form.entity.group_name" name="groupName" type="text" required
+                               ng-minlength="3" ng-maxlength="10">
+                        <div ng-messages="saveForm.groupName.$error" ng-if="saveForm.groupName.$dirty">
+                            <div ng-message="required">Поле обов'язкове для заповнення</div>
+                            <div ng-message-exp="['minlength', 'maxlength']">Кількість символів від 3 до 10</div>
+                        </div>
+                    </md-input-container>
+                </div>
 
-                <md-input-container layout="row">
-                    <label>Виберіть факультет</label>
-                    <md-select ng-model="form.entity.faculty_id" md-on-open="form.loadFaculties()"
-                               name="facultyName" required>
-                        <md-option ng-value="faculty.faculty_id" ng-repeat="faculty in form.faculties">
-                            {{::faculty.faculty_name}}
-                        </md-option>
-                    </md-select>
-                </md-input-container>
+                <div layout="column">
+                    <md-input-container>
+                        <label>Виберіть факультет</label>
+                        <md-select ng-model="form.entity.faculty_id" md-on-open="form.loadFaculties()"
+                                   name="facultyName" required>
+                            <md-option ng-value="faculty.faculty_id" ng-repeat="faculty in form.faculties">
+                                {{::faculty.faculty_name}}
+                            </md-option>
+                        </md-select>
+                        <div ng-messages="saveForm.facultyName.$error">
+                            <div ng-message="required">Поле обов'язкове для заповнення</div>
+                        </div>
+                    </md-input-container>
+                </div>
 
-                <md-input-container layout="row">
-                    <label>Виберіть спеціальність</label>
-                    <md-select ng-model="form.entity.speciality_id" md-on-open="form.loadSpecialities()"
-                               name="specialityName" required>
-                        <md-option ng-value="speciality.speciality_id" ng-repeat="speciality in form.specialities">
-                            {{::speciality.speciality_name}}
-                        </md-option>
-                    </md-select>
-                </md-input-container>
+                <div layout="column">
+                    <md-input-container>
+                        <label>Виберіть спеціальність</label>
+                        <md-select ng-model="form.entity.speciality_id" md-on-open="form.loadSpecialities()"
+                                   name="specialityName" required>
+                            <md-option ng-value="speciality.speciality_id" ng-repeat="speciality in form.specialities">
+                                {{::speciality.speciality_name}}
+                            </md-option>
+                        </md-select>
+                        <div ng-messages="saveForm.specialityName.$error">
+                            <div ng-message="required">Поле обов'язкове для заповнення</div>
+                        </div>
+                    </md-input-container>
+                </div>
             </div>
         </md-dialog-content>
 

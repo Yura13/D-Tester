@@ -1,7 +1,7 @@
 (function() {
     "use strict";
 
-    angular.module("app")
+    angular.module("app.core")
         .service("coreEntityService", coreEntityService);
 
     coreEntityService.$inject = ["$http", "BASE_URL", "URL"];

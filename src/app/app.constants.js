@@ -71,13 +71,14 @@
         .constant("MESSAGE", {
             SAVE_SUCCSES:       "Зміни збережено",
             SAVE_ERROR:         "Помилка. Зміни не збережено",
+            SAVE_CANCEL:        "Зміни не збережено",
             DEL_CONFIRM:        "Ви підтверджуєте видалення?",
             EDIT_CONFIRM:       "Ви підтверджуєте збереження змін?",
             END_TEST_CONFIRM:   "Ви підтверджуєте завершення тестування?",
             DEL_SUCCESS:        "Видалення успішне",
             DEL_ERROR:          "Помилка видалення",
-            DEL_SPEC_ERR:       "За цією спеціальністю існують групи. Спочатку видаліть їх.",
-            DEL_DECLINE:        "Неможливо видалити самого себе"
+            POSITION:           "top right",
+            DELAY:              2000
         })
         
         .constant("TYPES_OF_QUESTION", {

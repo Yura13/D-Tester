@@ -1,12 +1,12 @@
 (function() {
     "use strict";
 
-    angular.module("app.admin.groups")
+    angular.module("app.admin")
         .service("groupsService", groupsService);
 
-    groupsService.$inject = ["$http", "$q", "BASE_URL", "URL", "PAGINATION", "coreEntityService"];
+    groupsService.$inject = ["URL", "MESSAGE", "coreEntityService", "$mdToast"];
 
-    function groupsService($http, $q, BASE_URL, URL, PAGINATION, coreEntityService) {
+    function groupsService(URL, MESSAGE, coreEntityService, $mdToast) {
         this.getGroups = getGroups;
         this.getGroupById = getGroupById;
         this.getGroupsByFaculty = getGroupsByFaculty;
@@ -64,14 +64,35 @@
         
         function saveGroup(group) {
             if (group.group_id === undefined) {
-                return coreEntityService.addEntity(URL.ENTITIES.GROUP, group);
+                return coreEntityService.addEntity(URL.ENTITIES.GROUP, group).then(function(response) {
+                    showActionToast(MESSAGE.SAVE_SUCCSES);
+                }, function(response) {
+                    showActionToast(MESSAGE.SAVE_ERROR);
+                });
             } else {
-                return coreEntityService.editEntity(URL.ENTITIES.GROUP, group.group_id, group);
+                return coreEntityService.editEntity(URL.ENTITIES.GROUP, group.group_id, group).then(function(response) {
+                    showActionToast(MESSAGE.SAVE_SUCCSES);
+                }, function(response) {
+                    showActionToast(MESSAGE.SAVE_ERROR);
+                });
             }
         }
 
         function removeGroup(group) {
-            return coreEntityService.removeEntity(URL.ENTITIES.GROUP, group.group_id);
+            return coreEntityService.removeEntity(URL.ENTITIES.GROUP, group.group_id).then(function(response) {
+                showActionToast(MESSAGE.DEL_SUCCESS);
+            }, function(response) {
+                showActionToast(MESSAGE.DEL_ERROR);
+            });
+        }
+
+        function showActionToast(message) {
+            $mdToast.show(
+                $mdToast.simple()
+                    .textContent(message)
+                    .position(MESSAGE.POSITION)
+                    .hideDelay(MESSAGE.DELAY)
+            );
         }
     }
 }());

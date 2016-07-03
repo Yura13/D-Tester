@@ -2,7 +2,7 @@
     <div class="md-toolbar-tools" >
         <md-input-container flex-gt-xs="25" class="md-accent" style="margin-top: 36px; margin-bottom: 0px">
             <label>Пошук</label>
-            <input ng-model="faculties.search">
+            <input ng-model="faculties.search" ng-change="faculties.filterByName()">
         </md-input-container>
 
         <p flex-gt-xs="75"></p>
@@ -30,7 +30,7 @@
             </div>
         </md-subheader>
 
-        <md-list-item layout="row" ng-repeat="faculty in faculties.list" layout-wrap>
+        <md-list-item layout="row" ng-repeat="faculty in faculties.filtered" layout-wrap>
             <div flex-gt-xs="40">
                 <h4>{{::faculty.faculty_name}}</h4>
             </div>

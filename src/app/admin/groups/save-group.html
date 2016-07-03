@@ -1,31 +1,35 @@
-<md-bottom-sheet class="md-list md-has-header" ng-cloak>
-    <form name="saveForm" layout="row">
-        <md-input-container flex-gt-xs="20">
-            <label>Назва групи</label>
-            <input ng-model="form.entity.group_name" name="groupName" type="text" required>
-        </md-input-container>
+<md-dialog aria-label="List dialog" ng-cloak style="width: 500px">
+    <form name="saveForm">
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <md-input-container layout="row">
+                    <label>Назва групи</label>
+                    <input ng-model="form.entity.group_name" name="groupName" type="text" required>
+                </md-input-container>
 
-        <md-input-container flex-gt-xs="30">
-            <label>Виберіть факультет</label>
-            <md-select ng-model="form.entity.faculty_id" md-on-open="form.loadFaculties()"
-                       name="facultyName" required style="min-width: 300px;">
-                <md-option ng-value="faculty.faculty_id" ng-repeat="faculty in form.faculties">
-                    {{::faculty.faculty_name}}
-                </md-option>
-            </md-select>
-        </md-input-container>
+                <md-input-container layout="row">
+                    <label>Виберіть факультет</label>
+                    <md-select ng-model="form.entity.faculty_id" md-on-open="form.loadFaculties()"
+                               name="facultyName" required>
+                        <md-option ng-value="faculty.faculty_id" ng-repeat="faculty in form.faculties">
+                            {{::faculty.faculty_name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
 
-        <md-input-container flex-gt-xs="30">
-            <label>Виберіть спеціальність</label>
-            <md-select ng-model="form.entity.speciality_id" md-on-open="form.loadSpecialities()"
-                       name="specialityName" required style="min-width: 300px;">
-                <md-option ng-value="speciality.speciality_id" ng-repeat="speciality in form.specialities">
-                    {{::speciality.speciality_name}}
-                </md-option>
-            </md-select>
-        </md-input-container>
+                <md-input-container layout="row">
+                    <label>Виберіть спеціальність</label>
+                    <md-select ng-model="form.entity.speciality_id" md-on-open="form.loadSpecialities()"
+                               name="specialityName" required>
+                        <md-option ng-value="speciality.speciality_id" ng-repeat="speciality in form.specialities">
+                            {{::speciality.speciality_name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </md-dialog-content>
 
-        <div flex-gt-xs="20">
+        <md-dialog-actions>
             <md-button type="submit" class="md-fab md-primary md-mini" ng-click="form.clickSave(form.entity)"
                        ng-disabled="saveForm.$invalid">
                 <md-tooltip md-direction="top">Зберегти</md-tooltip>
@@ -36,6 +40,6 @@
                 <md-tooltip md-direction="top">Відмінити</md-tooltip>
                 <md-icon md-svg-src="images/ic_clear_white_18px.svg"></md-icon>
             </md-button>
-        </div>
+        </md-dialog-actions>
     </form>
-</md-bottom-sheet>
+</md-dialog>

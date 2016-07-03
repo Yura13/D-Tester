@@ -4,9 +4,9 @@
     angular.module("app.core")
         .controller("SaveFormEntityController", SaveFormEntityController);
 
-    SaveFormEntityController.$inject = ["$mdBottomSheet", "entity", "facultiesService", "specialitiesService", "$state"];
+    SaveFormEntityController.$inject = ["entity", "facultiesService", "specialitiesService", "$state", "$mdDialog", "$mdToast", "MESSAGE"];
 
-    function SaveFormEntityController($mdBottomSheet, entity, facultiesService, specialitiesService, $state) {
+    function SaveFormEntityController(entity, facultiesService, specialitiesService, $state, $mdDialog, $mdToast, MESSAGE) {
         var vm = this;
         vm.entity = entity || {};
         vm.clickSave = clickSave;
@@ -25,11 +25,17 @@
         }
 
         function clickSave(entity) {
-            $mdBottomSheet.hide(entity);
+            $mdDialog.hide(entity);
         }
 
         function clickCancel() {
-            $mdBottomSheet.cancel();
+            $mdDialog.cancel();
+            $mdToast.show(
+                $mdToast.simple()
+                    .textContent(MESSAGE.SAVE_CANCEL)
+                    .position(MESSAGE.POSITION)
+                    .hideDelay(MESSAGE.DELAY)
+            );
         }
     }
-})();
+}());

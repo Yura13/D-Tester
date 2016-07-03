@@ -14,8 +14,7 @@
 
         function getSubjects() {
             return coreEntityService.getEntities(URL.ENTITIES.SUBJECT).then(function(data) {
-                var sorted = helperService.sortedEntityByProperty(data, "subject_name");
-                return sorted;
+                return helperService.sortedEntityByProperty(data, "subject_name");
             });
         }
 

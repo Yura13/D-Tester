@@ -14,8 +14,7 @@
         
         function getFaculties() {
             return coreEntityService.getEntities(URL.ENTITIES.FACULTY).then(function(data) {
-                var sorted = helperService.sortedEntityByProperty(data, "faculty_name");
-                return sorted;
+                return helperService.sortedEntityByProperty(data, "faculty_name");
             });
         }
 

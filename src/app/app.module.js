@@ -4,9 +4,6 @@
     angular.module("app", [
         "app.core",
         "app.admin"
-        // "ui.router",
-        // "ngMaterial",
-        // "ngMessages"
     ]);
 }());
 

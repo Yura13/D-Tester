@@ -14,8 +14,7 @@
 
         function getSpecialities() {
             return coreEntityService.getEntities(URL.ENTITIES.SPECIALITY).then(function(data) {
-                var sorted = helperService.sortedEntityByProperty(data, "speciality_name");
-                return sorted;
+                return helperService.sortedEntityByProperty(data, "speciality_name");
             });
         }
 

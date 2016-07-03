@@ -6,5 +6,4 @@
             templateUrl: "app/components/header/header.component.html",
             controller: "HeaderController as header"
         });
-    
 }());

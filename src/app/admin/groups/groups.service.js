@@ -18,8 +18,7 @@
 
         function getGroups() {
             return coreEntityService.getEntities(URL.ENTITIES.GROUP).then(function(data) {
-                var sorted = helperService.sortedEntityByProperty(data, "group_name");
-                return sorted;
+                return helperService.sortedEntityByProperty(data, "group_name");
             });
         }
 
@@ -32,16 +31,14 @@
         function getGroupsByFaculty(faculty) {
             return coreEntityService.getEntitiesByEntityId(URL.ENTITIES.GROUP, URL.GET_GROUPS_BY_FACULTY, faculty.faculty_id)
                 .then(function(data) {
-                    var sorted = helperService.sortedEntityByProperty(data, "group_name");
-                    return sorted;
+                    return helperService.sortedEntityByProperty(data, "group_name");
                 });
         }
 
         function getGroupsBySpeciality(speciality) {
             return coreEntityService.getEntitiesByEntityId(URL.ENTITIES.GROUP, URL.GET_GROUPS_BY_SPECIALITY, speciality.speciality_id)
                 .then(function(data) {
-                    var sorted = helperService.sortedEntityByProperty(data, "group_name");
-                    return sorted;
+                    return helperService.sortedEntityByProperty(data, "group_name");
                 });
         }
 

@@ -9,7 +9,7 @@ var $ = require('gulp-load-plugins')({lazy: true});
 gulp.task('help', $.taskListing);
 gulp.task('default', ['help']);
 
-gulp.task('vet', function() {
+gulp.task('vet', () => {
     log('Analyzing source with JSHint and JSCS');
 
     return gulp.src(config.alljs)
@@ -20,25 +20,17 @@ gulp.task('vet', function() {
         .pipe($.jshint.reporter('fail'));
 });
 
-gulp.task('styles', ['clean-styles'], function() {
-    //log('Compiling Less --> CSS');
+gulp.task('styles', ['clean-styles'], () => {
     log('Compiling CSS');
 
-    return gulp.src(config.less)
+    return gulp.src(config.style)
         .pipe($.plumber())
-        //.pipe($.less())
         .pipe($.autoprefixer({browsers: ['last 2 version', '> 5%']}))
         .pipe(gulp.dest(config.temp));
 });
 
-gulp.task('fonts', ['clean-fonts'], function() {
-    log('Copying fonts');
 
-    return gulp.src(config.fonts)
-        .pipe(gulp.dest(config.build + 'fonts'));
-});
-
-gulp.task('images', ['clean-images'], function() {
+gulp.task('images', ['clean-images'], () => {
     log('Copying and compressing the images');
 
     return gulp.src(config.images)
@@ -46,25 +38,21 @@ gulp.task('images', ['clean-images'], function() {
         .pipe(gulp.dest(config.build + 'images'));
 });
 
-gulp.task('clean', function() {
+gulp.task('clean', () => {
     var delconfig = [].concat(config.build, config.temp);
     log('Cleaning: ' + $.util.colors.blue(delconfig));
     del(delconfig);
 });
 
-gulp.task('clean-fonts', function() {
-    clean(config.build + 'fonts/**/*.*');
-});
-
-gulp.task('clean-images', function() {
+gulp.task('clean-images', () => {
     clean(config.build + 'images/**/*.*');
 });
 
-gulp.task('clean-styles', function() {
+gulp.task('clean-styles', () => {
     clean(config.temp + '**/*.css');
 });
 
-gulp.task('clean-code', function() {
+gulp.task('clean-code', () => {
     var files = [].concat(
         config.temp + '**/*.js',
         config.build + '**/*.html',
@@ -73,7 +61,7 @@ gulp.task('clean-code', function() {
     clean(files);
 });
 
-gulp.task('templatecache', ['clean-code'], function() {
+gulp.task('templatecache', ['clean-code'], () => {
     log('Creating AngularJS $templateCache');
 
     return gulp.src(config.htmltemplates)
@@ -85,26 +73,25 @@ gulp.task('templatecache', ['clean-code'], function() {
         .pipe(gulp.dest(config.temp));
 });
 
-gulp.task('wiredep', function() {
-    log('Wire up the bower css js and our app js into the html');
+gulp.task('inject', ['templatecache', 'styles'], () => {
+    log('Wire up the bower css js, app css js into the html');
     var options = config.getWiredepDefaultOptions();
     var wiredep = require('wiredep').stream;
+    var templateCache = config.temp + config.templateCache.file;
 
     return gulp.src(config.index)
         .pipe(wiredep(options))
-        .pipe($.inject(gulp.src(config.js)))
+        .pipe($.inject(gulp.src(config.js, {read: false}), {relative: true}))
+        .pipe($.inject(
+            gulp.src(templateCache, {read: false}), {
+                starttag: '<!-- inject:templates:js -->',
+                relative: true
+            }))
+        .pipe($.inject(gulp.src(config.css, {read: false}), {relative: true}))
         .pipe(gulp.dest(config.client));
 });
 
-gulp.task('inject', ['wiredep', 'styles', 'templatecache'], function() {
-    log('Wire up the app css into the html, and call wiredep');
-
-    return gulp.src(config.index)
-        .pipe($.inject(gulp.src(config.css)))
-        .pipe(gulp.dest(config.client));
-});
-
-gulp.task('build', ['optimize', 'images', 'fonts'], function() {
+gulp.task('build', ['optimize', 'images'], () => {
     log('Building everything');
 
     var msg = {
@@ -116,71 +103,6 @@ gulp.task('build', ['optimize', 'images', 'fonts'], function() {
     log(msg);
     notify(msg);
 });
-
-gulp.task('optimize', ['inject'], function() {
-    log('Optimizing the javascript, css, html');
-
-    var assets = $.useref.assets({searchPath: './'});
-    var templateCache = config.temp + config.templateCache.file;
-    var cssFilter = $.filter('**/*.css', {restore: true});
-    var jsLibFilter = $.filter('**/' + config.optimized.lib);
-    var jsAppFilter = $.filter('**/' + config.optimized.app);
-
-    return gulp.src(config.index)
-        .pipe($.plumber())
-        .pipe($.inject(
-            gulp.src("./tmp/templates.js", {read: false}), {
-            starttag: '<!-- inject:templates:js -->'
-        }))
-        .pipe(assets)
-        .pipe(cssFilter)
-        .pipe($.csso())
-        .pipe(cssFilter.restore())
-        .pipe(jsLibFilter)
-        .pipe($.uglify())
-        .pipe(jsLibFilter.restore())
-        .pipe(jsAppFilter)
-        .pipe($.ngAnnotate())
-        .pipe($.uglify())
-        .pipe(jsAppFilter.restore())
-        .pipe($.rev())
-        .pipe(assets.restore())
-        .pipe($.useref())
-        .pipe($.revReplace())
-        .pipe(gulp.dest(config.build))
-        .pipe($.rev.manifest())
-        .pipe(gulp.dest(config.build));
-});
-
-/**
- * Bump the version
- * --type=pre will bump the prerelease version *.*.*-x
- * --type=patch or no flag will bump the patch version *.*.x
- * --type=minor will bump the minor version *.x.*
- * --type=major will bump the major version x.*.*
- * --version=1.2.3 will bump to a specific version and ignore other flags
- */
-gulp.task('bump', function() {
-    var msg = 'Bumping versions';
-    var type = args.type;
-    var version = args.version;
-    var options = {};
-    if (version) {
-        options.version = version;
-        msg += ' to ' + version;
-    } else {
-        options.type = type;
-        msg += ' for a ' + type;
-    }
-    log(msg);
-
-    return gulp.src(config.packages)
-        .pipe($.print())
-        .pipe($.bump(options))
-        .pipe(gulp.dest(config.root));
-});
-
-////////////
 
 function notify(options) {
     var notifier = require('node-notifier');

@@ -15,7 +15,6 @@ module.exports = function() {
         build: './build/',
         client: client,
         css: temp + 'styles.css',
-        fonts: './bower_components/font-awesome/fonts/**/*.*',
         html: clientApp + '**/*.html',
         htmltemplates: clientApp + '**/*.html',
         images: client + 'images/**/*.*',
@@ -26,7 +25,7 @@ module.exports = function() {
             '!' + clientApp + '**/*.spec.js'
         ],
         //less: client + 'styles/styles.less',
-        less: client + 'styles/styles.css',
+        style: client + 'styles/styles.css',
         root: root,
         temp: temp,
 

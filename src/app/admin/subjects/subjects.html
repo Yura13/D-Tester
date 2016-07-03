@@ -1,1 +1,67 @@
-SUBJECTS
+<md-toolbar class="md-theme-light">
+    <div class="md-toolbar-tools">
+        <md-input-container flex-gt-xs="25" class="md-accent" style="margin-top: 36px; margin-bottom: 0px">
+            <label>Пошук</label>
+            <input ng-model="subjects.search" ng-change="subjects.filterByName()">
+        </md-input-container>
+
+        <p flex-gt-xs="75"></p>
+
+        <div class="md-secondary">
+            <md-button class="md-fab md-accent md-mini" ng-click="subjects.showSaveForm()">
+                <md-tooltip md-direction="top">Додати</md-tooltip>
+                <md-icon md-svg-src="images/ic_add_white_18px.svg"></md-icon>
+            </md-button>
+        </div>
+    </div>
+</md-toolbar>
+
+<md-content>
+    <md-list>
+        <md-subheader class="md-no-sticky">
+            <div layout="row">
+                <div flex-gt-xs="25">
+                    <span>Назва предмету</span>
+                </div>
+
+                <div flex-gt-xs="45">
+                    <span>Опис</span>
+                </div>
+            </div>
+        </md-subheader>
+
+        <md-list-item layout="row" ng-repeat="subject in subjects.filtered" layout-wrap ng-cloak>
+            <div flex-gt-xs="25">
+                <h4>{{::subject.subject_name}}</h4>
+            </div>
+
+            <div flex-gt-xs="45">
+                <p>{{::subject.subject_description}}</p>
+            </div>
+
+            <div flex-gt-xs="30" class="md-secondary">
+                <md-button class="md-fab md-primary md-mini" ng-click="subjects.getTestsBySubject(subject)">
+                    <md-tooltip md-direction="top">Тести</md-tooltip>
+                    <md-icon md-svg-src="images/ic_format_list_bulleted_white_18px.svg"></md-icon>
+                </md-button>
+
+                <md-button class="md-fab md-primary md-mini" ng-click="subjects.getSchedulesBySubject(subject)">
+                    <md-tooltip md-direction="top">Розклад тестування</md-tooltip>
+                    <md-icon md-svg-src="images/ic_schedule_white_18px.svg"></md-icon>
+                </md-button>
+
+                <md-button class="md-fab md-primary md-mini" ng-click="subjects.showSaveForm(subject)">
+                    <md-tooltip md-direction="top">Редагувати</md-tooltip>
+                    <md-icon md-svg-src="images/ic_edit_white_18px.svg"></md-icon>
+                </md-button>
+
+                <md-button class="md-fab md-primary md-mini" ng-click="subjects.removeSubject(subject)">
+                    <md-tooltip md-direction="top">Видалити</md-tooltip>
+                    <md-icon md-svg-src="images/ic_delete_forever_white_18px.svg"></md-icon>
+                </md-button>
+            </div>
+
+            <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+    </md-list>
+</md-content>

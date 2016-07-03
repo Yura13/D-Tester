@@ -19,11 +19,6 @@
                 templateUrl: "app/admin/home-admin.html",
                 controller: "HomeAdminController as admin"
             })
-            .state("admin.admins", {
-                url: "/admins",
-                templateUrl: "app/admin/admins/admins.html",
-                controller: "AdminsController as admins"
-            })
             .state("admin.faculties", {
                 url: "/faculties",
                 template: "<faculties></faculties>"
@@ -38,8 +33,7 @@
             })
             .state("admin.groupsByEntity", {
                 url: "/{entity}/{entity_id:int}/groups",
-                templateUrl: "app/admin/groups/groups.html",
-                controller: "GroupsController as groups"
+                template: "<groups></groups>"
             })
             .state("admin.students", {
                 url: "/groups/{group_id:int}/students",
@@ -48,8 +42,7 @@
             })
             .state("admin.subjects", {
                 url: "/subjects",
-                templateUrl: "app/admin/subjects/subjects.html",
-                controller: "SubjectsController as subjects"
+                template: "<subjects></subjects>"
             })
             .state("admin.scheduleForEntity", {
                 url: "/{entity}/{entity_id:int}/schedules",

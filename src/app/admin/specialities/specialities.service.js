@@ -4,9 +4,9 @@
     angular.module("app.admin")
         .service("specialitiesService", specialitiesService);
 
-    specialitiesService.$inject = ["URL", "MESSAGE", "coreEntityService", "$mdToast"];
+    specialitiesService.$inject = ["URL", "MESSAGE", "coreEntityService", "helperService"];
 
-    function specialitiesService(URL, MESSAGE, coreEntityService, $mdToast) {
+    function specialitiesService(URL, MESSAGE, coreEntityService, helperService) {
         this.getSpecialities = getSpecialities;
         this.getSpecialityById = getSpecialityById;
         this.saveSpeciality = saveSpeciality;
@@ -14,7 +14,8 @@
 
         function getSpecialities() {
             return coreEntityService.getEntities(URL.ENTITIES.SPECIALITY).then(function(data) {
-                return data;
+                var sorted = helperService.sortedEntityByProperty(data, "speciality_name");
+                return sorted;
             });
         }
 
@@ -27,33 +28,25 @@
         function saveSpeciality(speciality) {
             if (speciality.speciality_id === undefined) {
                 return coreEntityService.addEntity(URL.ENTITIES.SPECIALITY, speciality).then(function(response) {
-                    showActionToast(MESSAGE.SAVE_SUCCSES);
+                    helperService.showActionToast(MESSAGE.SAVE_SUCCSES);
                 }, function(response) {
-                    showActionToast(MESSAGE.SAVE_ERROR);
+                    helperService.showActionToast(MESSAGE.SAVE_ERROR);
                 });
             } else {
                 return coreEntityService.editEntity(URL.ENTITIES.SPECIALITY, speciality.speciality_id, speciality).then(function(response) {
-                    showActionToast(MESSAGE.SAVE_SUCCSES);
+                    helperService.showActionToast(MESSAGE.SAVE_SUCCSES);
                 }, function(response) {
-                    showActionToast(MESSAGE.SAVE_ERROR);
+                    helperService.showActionToast(MESSAGE.SAVE_ERROR);
                 });
             }
         }
 
         function removeSpeciality(speciality) {
             return coreEntityService.removeEntity(URL.ENTITIES.SPECIALITY, speciality.speciality_id).then(function(response) {
-                showActionToast(MESSAGE.DEL_SUCCESS);
+                helperService.showActionToast(MESSAGE.DEL_SUCCESS);
             }, function(response) {
-                showActionToast(MESSAGE.DEL_ERROR);
+                helperService.showActionToast(MESSAGE.DEL_ERROR);
             });
         }
-
-        function showActionToast(message) {
-            $mdToast.show(
-                $mdToast.simple()
-                    .textContent(message)
-            );
-        }
     }
-
 }());

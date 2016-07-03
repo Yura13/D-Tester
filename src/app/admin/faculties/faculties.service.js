@@ -4,9 +4,9 @@
     angular.module("app.admin")
         .service("facultiesService", facultiesService);
 
-    facultiesService.$inject = ["URL", "MESSAGE", "coreEntityService", "$mdToast"];
+    facultiesService.$inject = ["URL", "MESSAGE", "coreEntityService", "helperService"];
     
-    function facultiesService(URL, MESSAGE, coreEntityService, $mdToast) {
+    function facultiesService(URL, MESSAGE, coreEntityService, helperService) {
         this.getFaculties = getFaculties;
         this.getFacultyById = getFacultyById;
         this.saveFaculty = saveFaculty;
@@ -14,7 +14,8 @@
         
         function getFaculties() {
             return coreEntityService.getEntities(URL.ENTITIES.FACULTY).then(function(data) {
-                return data;
+                var sorted = helperService.sortedEntityByProperty(data, "faculty_name");
+                return sorted;
             });
         }
 
@@ -27,32 +28,25 @@
         function saveFaculty(faculty) {
             if (faculty.faculty_id === undefined) {
                 return coreEntityService.addEntity(URL.ENTITIES.FACULTY, faculty).then(function(response) {
-                    showActionToast(MESSAGE.SAVE_SUCCSES);
+                    helperService.showActionToast(MESSAGE.SAVE_SUCCSES);
                 }, function(response) {
-                    showActionToast(MESSAGE.SAVE_ERROR);
+                    helperService.showActionToast(MESSAGE.SAVE_ERROR);
                 });
             } else {
                 return coreEntityService.editEntity(URL.ENTITIES.FACULTY, faculty.faculty_id, faculty).then(function(response) {
-                    showActionToast(MESSAGE.SAVE_SUCCSES);
+                    helperService.showActionToast(MESSAGE.SAVE_SUCCSES);
                 }, function(response) {
-                    showActionToast(MESSAGE.SAVE_ERROR);
+                    helperService.showActionToast(MESSAGE.SAVE_ERROR);
                 });
             }
         }
 
         function removeFaculty(faculty) {
             return coreEntityService.removeEntity(URL.ENTITIES.FACULTY, faculty.faculty_id).then(function(response) {
-                showActionToast(MESSAGE.DEL_SUCCESS);
+                helperService.showActionToast(MESSAGE.DEL_SUCCESS);
             }, function(response) {
-                showActionToast(MESSAGE.DEL_ERROR);
+                helperService.showActionToast(MESSAGE.DEL_ERROR);
             });
-        }
-
-        function showActionToast(message) {
-            $mdToast.show(
-                $mdToast.simple()
-                    .textContent(message)
-            );
         }
     }
 }());

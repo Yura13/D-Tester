@@ -26,18 +26,15 @@
             })
             .state("admin.faculties", {
                 url: "/faculties",
-                templateUrl: "app/admin/faculties/faculties.html",
-                controller: "FacultiesController as faculties"
+                template: "<faculties></faculties>"
             })
             .state("admin.specialities", {
                 url: "/specialities",
-                templateUrl: "app/admin/specialities/specialities.html",
-                controller: "SpecialitiesController as specialities"
+                template: "<specialities></specialities>"
             })
             .state("admin.groups", {
                 url: "/groups",
-                templateUrl: "app/admin/groups/groups.html",
-                controller: "GroupsController as groups"
+                template: "<groups></groups>"
             })
             .state("admin.groupsByEntity", {
                 url: "/{entity}/{entity_id:int}/groups",

@@ -33,8 +33,6 @@
             $mdToast.show(
                 $mdToast.simple()
                     .textContent(MESSAGE.SAVE_CANCEL)
-                    .position(MESSAGE.POSITION)
-                    .hideDelay(MESSAGE.DELAY)
             );
         }
     }

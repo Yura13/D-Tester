@@ -30,7 +30,7 @@
             </div>
         </md-subheader>
 
-        <md-list-item layout="row" ng-repeat="faculty in faculties.filtered" layout-wrap>
+        <md-list-item layout="row" ng-repeat="faculty in faculties.filtered" layout-wrap ng-cloak>
             <div flex-gt-xs="40">
                 <h4>{{::faculty.faculty_name}}</h4>
             </div>

@@ -90,8 +90,6 @@
             $mdToast.show(
                 $mdToast.simple()
                     .textContent(message)
-                    .position(MESSAGE.POSITION)
-                    .hideDelay(MESSAGE.DELAY)
             );
         }
     }

@@ -15,7 +15,7 @@
                         <md-icon md-svg-icon="images/ic_menu_white_24px.svg"></md-icon>
                     </md-button>
 
-                    <md-menu-content>
+                    <md-menu-content ng-cloak>
                         <md-menu-item ng-repeat="item in header.menu">
                             <md-button ui-sref="{{::item.STATE}}">{{::item.NAME | uppercase}}</md-button>
                         </md-menu-item>

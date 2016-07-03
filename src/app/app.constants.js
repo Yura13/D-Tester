@@ -76,10 +76,8 @@
             EDIT_CONFIRM:       "Ви підтверджуєте збереження змін?",
             END_TEST_CONFIRM:   "Ви підтверджуєте завершення тестування?",
             DEL_SUCCESS:        "Видалення успішне",
-            DEL_ERROR:          "Помилка видалення",
-            POSITION:           "top right",
-            DELAY:              2000
-        })
+            DEL_ERROR:          "Помилка видалення"
+})
         
         .constant("TYPES_OF_QUESTION", {
             SIMPLE: {NAME: "Простий вибір", VALUE: "1"},

@@ -7,14 +7,14 @@
     coreEntityService.$inject = ["$http", "BASE_URL", "URL"];
 
     function coreEntityService($http, BASE_URL, URL) {
-        this.successCallback = successCallback;
-        this.errorCallback = errorCallback;
+        // this.successCallback = successCallback;
+        // this.errorCallback = errorCallback;
         this.getEntities = getEntities;
         // this.getEntitiesById = getEntitiesById;
         this.getEntitiesByEntityId = getEntitiesByEntityId;
         this.getEntityById = getEntityById;
-        this.getEntitiesRange = getEntitiesRange;
-        this.getEntitiesCount = getEntitiesCount;
+        // this.getEntitiesRange = getEntitiesRange;
+        // this.getEntitiesCount = getEntitiesCount;
         this.addEntity = addEntity;
         this.editEntity = editEntity;
         this.removeEntity = removeEntity;

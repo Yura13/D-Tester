@@ -29,36 +29,12 @@ gulp.task('styles', ['clean-styles'], () => {
         .pipe(gulp.dest(config.temp));
 });
 
-
-gulp.task('images', ['clean-images'], () => {
-    log('Copying and compressing the images');
-
-    return gulp.src(config.images)
-        .pipe($.imagemin({optimizationLevel: 4}))
-        .pipe(gulp.dest(config.build + 'images'));
-});
-
-gulp.task('clean', () => {
-    var delconfig = [].concat(config.build, config.temp);
-    log('Cleaning: ' + $.util.colors.blue(delconfig));
-    del(delconfig);
-});
-
-gulp.task('clean-images', () => {
-    clean(config.build + 'images/**/*.*');
-});
-
 gulp.task('clean-styles', () => {
     clean(config.temp + '**/*.css');
 });
 
 gulp.task('clean-code', () => {
-    var files = [].concat(
-        config.temp + '**/*.js',
-        config.build + '**/*.html',
-        config.build + 'js/**/*.js'
-    );
-    clean(files);
+    clean(config.temp + '**/*.js');
 });
 
 gulp.task('templatecache', ['clean-code'], () => {
@@ -89,19 +65,6 @@ gulp.task('inject', ['templatecache', 'styles'], () => {
             }))
         .pipe($.inject(gulp.src(config.css, {read: false}), {relative: true}))
         .pipe(gulp.dest(config.client));
-});
-
-gulp.task('build', ['optimize', 'images'], () => {
-    log('Building everything');
-
-    var msg = {
-        title: 'gulp build',
-        subtitle: 'Deployed to the build folder',
-        message: 'Running'
-    };
-    //del(config.temp);
-    log(msg);
-    notify(msg);
 });
 
 function notify(options) {

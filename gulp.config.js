@@ -11,7 +11,6 @@ module.exports = function() {
         directory: './bower_components/',
         ignorePath: '../..'
     };
-    var nodeModules = 'node_modules';
 
     var config = {
         /**
@@ -98,7 +97,6 @@ module.exports = function() {
         var options = {
             files: [].concat(
                 bowerFiles,
-                "bower_components/angular-mocks/angular-mocks.js",
                 // config.specHelpers,
                 clientApp + '**/*.module.js',
                 clientApp + '**/*.js',
@@ -116,6 +114,7 @@ module.exports = function() {
             preprocessors: {'app/**/*.js': ['coverage']}
         };
         options.preprocessors[clientApp + '**/!(*.spec)+(.js)'] = ['coverage'];
+        
         return options;
     }
 };
